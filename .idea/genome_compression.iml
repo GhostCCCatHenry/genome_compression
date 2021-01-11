@@ -14,6 +14,10 @@
     <orderEntry type="library" name="echarts" level="application" />
     <orderEntry type="library" name="echarts.common" level="application" />
     <orderEntry type="library" name="index" level="application" />
+    <orderEntry type="library" name="Chart" level="application" />
+    <orderEntry type="library" name="jquery.slim" level="application" />
+    <orderEntry type="library" name="feather" level="application" />
+    <orderEntry type="library" name="popper" level="application" />
   </component>
   <component name="TemplatesService">
     <option name="TEMPLATE_CONFIGURATION" value="Jinja2" />
