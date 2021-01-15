@@ -1,6 +1,9 @@
-from flask import Flask, render_template, request, redirect, sessions, session, make_response
+from flask import Flask, render_template, request, redirect, sessions, session, make_response, Blueprint
 
 from util.user import USER_INFO
+
+user = Blueprint('user', __name__)
+
 
 app = Flask(__name__)  # 实例化对象
 
@@ -33,6 +36,16 @@ def index():
 @app.route('/register')
 def register():
     return render_template('register.html')
+
+
+@app.route('/dadd')
+def dockerAdd():
+    return render_template('dockerAdd.html')
+
+
+@app.route('/dedit')
+def dockerEdit():
+    return render_template('dockerEdit.html')
 
 
 @app.route('/support')
@@ -88,11 +101,12 @@ def login():
     password = request.form.get("pwd")
     # print(USER_INFO.values())
     if {'id': usr, 'pwd': password} in USER_INFO.values():
-        return redirect('/index')
+        return redirect('/user/index')
     else:
         return render_template('login.html', msg='用户名或密码错误！')
 
 
+# app.register_blueprint(user, url_prefix='/user')
 if __name__ == '__main__':
     # app.config.from_object('config/config.py')
     # app.config('DEBUG')
