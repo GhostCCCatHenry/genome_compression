@@ -9,32 +9,35 @@
     <title>并行化计算</title>
 
     <!--element-->
-    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    {#    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">#}
 
+    <link rel="stylesheet" href="/static/layui/css/theme10.min.css">
+    <link rel="stylesheet" href="/static/x-admin/css/font.css">
+    <link rel="stylesheet" href="/static/x-admin/css/xadmin.css">
     <link rel="canonical" href="https://v4.bootcss.com/docs/examples/dashboard/">
     <link rel="stylesheet" href="/static/layui/css/layui.css">
     <!-- Bootstrap core CSS -->
     <link href="/static/bootstrap-4.5.0-dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="" crossorigin="anonymous">
     <!-- Favicons -->
-    <meta name="msapplication-config" content="/docs/assets/img/favicons/browserconfig.xml">
+{#    <meta name="msapplication-config" content="/docs/assets/img/favicons/browserconfig.xml">#}
     <meta name="theme-color" content="#563d7c">
-    <style>
-        .bd-placeholder-img {
-            font-size: 1.125rem;
-            text-anchor: middle;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
-
-        @media (min-width: 768px) {
-            .bd-placeholder-img-lg {
-                font-size: 3.5rem;
-            }
-        }
-    </style>
+{#    <style>#}
+{#        .bd-placeholder-img {#}
+{#            font-size: 1.125rem;#}
+{#            text-anchor: middle;#}
+{#            -webkit-user-select: none;#}
+{#            -moz-user-select: none;#}
+{#            -ms-user-select: none;#}
+{#            user-select: none;#}
+{#        }#}
+{##}
+{#        @media (min-width: 768px) {#}
+{#            .bd-placeholder-img-lg {#}
+{#                font-size: 3.5rem;#}
+{#            }#}
+{#        }#}
+{#    </style>#}
     <!-- Custom styles for this template -->
     <link href="/static/bootstrap-4.5.0-dist/css/dashboard.css" rel="stylesheet">
     <style type="text/css">/* Chart.js */
@@ -283,8 +286,9 @@
                 <input type="text" class="form-control" aria-label="Sizing example input"
                        aria-describedby="inputGroup-sizing-default">
                 <div class="input-group-append">
-                    <button type="button" class="btn btn-success">选择文件</button>
-{#                    <span class="input-group-text" id="inputGroup-sizing-default">输入文件路径</span>#}
+                    <button type="button" class="btn btn-success"
+                            onclick="xadmin.open('编辑','dedit')" href="javascript:;">选择文件</button>
+                    {#                    <span class="input-group-text" id="inputGroup-sizing-default">输入文件路径</span>#}
                 </div>
             </div>
 
@@ -311,13 +315,8 @@
                         class="layui-progress-text">100%</span></div>
             </div>
 
-            <div id="chart-panel" class="right-panel" _echarts_instance_="ec_1610359954883"
-                 style="-webkit-tap-highlight-color: transparent; user-select: none;">
-                <div style="position: relative; width: 779px; height: 760px; padding: 0px; margin: 0px; border-width: 0px; cursor: default;">
-                    <canvas data-zr-dom-id="zr_0" width="779" height="760"
-                            style="position: absolute; left: 0px; top: 0px; width: 779px; height: 760px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); padding: 0px; margin: 0px; border-width: 0px;"></canvas>
-                </div>
-                <div></div>
+            <div class="input-group mb-1">
+                <label id="open"></label>
             </div>
 
         </main>
@@ -331,6 +330,7 @@
 {#        integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd"#}
 {#        crossorigin="anonymous"></script>#}
 <script src="/static/layui/layui.js"></script>
+<script src="/static/x-admin/js/xadmin.js"></script>
 <!-- 引入element组件库 -->
 <script src="https://unpkg.com/element-ui/lib/index.js"></script>
 {#会与layer.js冲突！#}
@@ -349,6 +349,8 @@
         var $ = layui.jquery
             , element = layui.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
 
+        {#$id='正在压缩中！'#}
+
         //触发事件
         var active = {
             loading: function (othis) {
@@ -357,13 +359,13 @@
 
                 //模拟loading
                 var n = 0, timer = setInterval(function () {
-                    n = n + Math.random() * 10 | 0;
+                    n = n + Math.random()/5;
                     if (n > 100) {
                         n = 100;
                         clearInterval(timer);
                         othis.removeClass(DISABLED);
                     }
-                    element.progress('demo', n + '%');
+                    element.progress('demo', n.toFixed(2) + '%');
                 }, 300 + Math.random() * 1000);
 
                 othis.addClass(DISABLED);
@@ -373,6 +375,7 @@
         $('.site-demo-active').on('click', function () {
             var othis = $(this), type = $(this).data('type');
             active[type] ? active[type].call(this, othis) : '';
+                    $id='正在压缩中！';
         });
 
 
@@ -411,35 +414,6 @@
             , form = layui.form;
     });
 </script>
-<script>
-    // 基于准备好的dom，初始化echarts实例
-    var myChart = echarts.init(document.getElementById('chart-panel'));
 
-    option = {
-        tooltip: {
-            formatter: '{a} <br/>{b} : {c}%'
-        },
-        toolbox: {
-            feature: {
-                restore: {},
-                saveAsImage: {}
-            }
-        },
-        series: [
-            {
-                name: '业务指标',
-                type: 'gauge',
-                detail: {formatter: '{value}%'},
-                data: [{value: 50, name: '压缩率'}]
-            }
-        ]
-    };
-
-    setInterval(function () {
-        option.series[0].data[0].value = (Math.random() * 100).toFixed(2) - 0;
-        myChart.setOption(option, true);
-    }, 2000);
-
-</script>
 </body>
 </html>

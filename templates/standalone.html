@@ -8,6 +8,9 @@
     <meta name="generator" content="Jekyll v4.0.1">
     <title>单机算法</title>
 
+    <link rel="stylesheet" href="/static/layui/css/theme10.min.css">
+    <link rel="stylesheet" href="/static/x-admin/css/font.css">
+    <link rel="stylesheet" href="/static/x-admin/css/xadmin.css">
     <link rel="canonical" href="https://v4.bootcss.com/docs/examples/dashboard/">
     <link rel="stylesheet" href="/static/layui/css/layui.css">
     <!-- Bootstrap core CSS -->
@@ -321,7 +324,8 @@
 <script src="/static/bootstrap-4.5.0-dist/js/bootstrap.bundle.min.js"
         integrity=""
         crossorigin="anonymous"></script>
-<script src="/static/layui/layui.js"></script> {#会与layer.js冲突！#}
+<script src="/static/layui/layui.js"></script>
+{#会与layer.js冲突！#}
 {#<script src="/static/layer/layer.js"></script>#}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
@@ -367,30 +371,30 @@
 
     });
 
-        $('#test2').on('click', function () {
-            layer.open({
-                type: 1, title: '高级参数设置',
-                area: ['600px', '360px'],
-                shadeClose: true, //点击遮罩关闭
-                content: '\<\div style="padding:20px;">        <form style="margin: auto;width: 350px">\n' +
-                    '            <div class="form-group flex-nowrap">\n' +
-                    '                <label for="exampleInputEmail1">搜索长度k</label>\n' +
-                    '                <input type="text" class="form-control" placeholder="k-mer" aria-label="Username" aria-describedby="addon-wrapping">\n' +
-                    '            </div>\n' +
-                    '            <div class="form-group flex-nowrap">\n' +
-                    '                <label for="exampleInputPassword1">匹配阈值m</label>\n' +
-                    '                <input type="text" class="form-control" placeholder="threshold" aria-label="Password" aria-describedby="addon-wrapping">\n' +
-                    '            </div>\n' +
-                    '              <div class="form-group flex-nowrap">\n' +
-                    '                <label for="exampleInputPassword1">二次匹配采样量</label>\n' +
-                    '                <input type="text" class="form-control" placeholder="sample" aria-label="Password" aria-describedby="addon-wrapping">\n' +
-                    '            </div>\n' +
-                    '            <div class="form-group" style="width:100%;text-align:center">\n' +
-                    '                <button type="submit" class="btn-group btn btn-primary">提交</button>\n' +
-                    '            </div>\n' +
-                    '        </form>\<\/div>'
-            });
+    $('#test2').on('click', function () {
+        layer.open({
+            type: 1, title: '高级参数设置',
+            area: ['600px', '360px'],
+            shadeClose: true, //点击遮罩关闭
+            content: '\<\div style="padding:20px;">        <form style="margin: auto;width: 350px">\n' +
+                '            <div class="form-group flex-nowrap">\n' +
+                '                <label for="exampleInputEmail1">搜索长度k</label>\n' +
+                '                <input type="text" class="form-control" placeholder="k-mer" aria-label="Username" aria-describedby="addon-wrapping">\n' +
+                '            </div>\n' +
+                '            <div class="form-group flex-nowrap">\n' +
+                '                <label for="exampleInputPassword1">匹配阈值m</label>\n' +
+                '                <input type="text" class="form-control" placeholder="threshold" aria-label="Password" aria-describedby="addon-wrapping">\n' +
+                '            </div>\n' +
+                '              <div class="form-group flex-nowrap">\n' +
+                '                <label for="exampleInputPassword1">二次匹配采样量</label>\n' +
+                '                <input type="text" class="form-control" placeholder="sample" aria-label="Password" aria-describedby="addon-wrapping">\n' +
+                '            </div>\n' +
+                '            <div class="form-group" style="width:100%;text-align:center">\n' +
+                '                <button type="submit" class="btn-group btn btn-primary">提交</button>\n' +
+                '            </div>\n' +
+                '        </form>\<\/div>'
         });
+    });
 </script>
 
 <script>
